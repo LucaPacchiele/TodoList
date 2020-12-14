@@ -24,4 +24,5 @@ yarn-error.log*
 
 src_button_marvel
 src_timer
-componets/backup
+src_3cards
+src_crud_class
