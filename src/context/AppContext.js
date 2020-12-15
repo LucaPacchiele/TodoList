@@ -3,17 +3,6 @@ import React, { createContext, useEffect, useState } from 'react'
 //importare ed utilizzare AppContext per nei consumers
 export const AppContext = createContext()
 
-const EMPTY_TODO = {
-  userId: 0,
-  id: 0,
-  title: '',
-  completed: "todo",
-  pref: false,
-  update: false
-}
-
-
-
 
 //importare ed impostare AppProvider a monte dei consumers
 const AppProvider = ({ children }) => {
@@ -25,7 +14,7 @@ const AppProvider = ({ children }) => {
   // // const urlP = "http://cors-anywhere.herokuapp.com/"
   // const URLP = 'https://cors-anywhere.herokuapp.com'
   //   const GITURL = 'https://jobs.github.com/positions.json'
-  const url = "http://jsonplaceholder.typicode.com/todos"
+  const url = "https://jsonplaceholder.typicode.com/todos"
 
   //il nuovo ID è il valore del massimo tra gli indici degli array + 1
   const calcNewId = (arr) => {
@@ -79,7 +68,6 @@ const AppProvider = ({ children }) => {
       el.completed ? item.completed = "done" : item.completed = "todo"
 
       setTodos(addTodo(item))
-
     })
   }
 
@@ -108,7 +96,7 @@ const AppProvider = ({ children }) => {
 
 
   const clearTodos = (idTodo) => {
-    console.log("idTodo", idTodo)
+    //console.log("idTodo", idTodo)
     if (idTodo >= 0) {
       //viene cancellato l'elemento con id === idTodo
       //è necessario appoggiarsi ad un array provvisorio todosProv ed è necessario accedere
@@ -129,7 +117,6 @@ const AppProvider = ({ children }) => {
     }
     else {
       //cancella tutto
-      console.log("delete all")
       setTodos([])
     }
   }

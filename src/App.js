@@ -23,24 +23,19 @@ function App() {
         <AppProvider>
 
           <Navbar />
-
+          
           <Container>
-
-            
-            
-           
 
             <Switch>
 
-
               <Route exact path="/">
-              <Home />
+                <Home />
               </Route>
               <Route exact path="/TodoList">
-              <TodoList />
+                <TodoList />
               </Route>
               <Route exact path="/Preferiti">
-              <Preferiti />
+                <Preferiti />
               </Route>
               <Route exact path="/About">
                 <About />

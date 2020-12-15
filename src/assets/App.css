@@ -1,3 +1,24 @@
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('./fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Italic';
+    src: url('./fonts/Roboto-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -8,24 +29,37 @@
     font-size: 1.2rem;
 }
 
-
-
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto-Regular', sans-serif;
     margin: 0 auto;
     background-color: #FFE7C1;
 }
+
+a {
+    text-decoration: none;
+    color: #005e6d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 
 button {
     background-color: #C6F0DA;
     cursor: pointer;
     padding: 15px;
-    margin: 5px;
     border-radius: 10px;
-    box-shadow: 1px 1px 3px #676767;
-    border: 2px solid #fff;
+    box-shadow: 0px 1px 3px #676767;
+    border: 3px solid #fff;
     color: #005e6d;
     text-decoration: none;
+    width: 100%;
+    justify-content: center;
+}
+
+button:hover {
+    box-shadow: 0px 3px 5px #6767678e;
 }
 
 h1 {
@@ -37,6 +71,10 @@ h1 {
     font-size: 2rem;
 }
 
+h2 {
+    margin-top: 15px;
+}
+
 .App {
     display: flex;
     width: 100%;
@@ -45,27 +83,38 @@ h1 {
 
 .Container {
     width: 70vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
     overflow-y: auto;
 }
 
 .Navbar {
     width: 30vw;
+    padding: 2vw;
     background-color: #FFE7C1;
-}
-
-.Navbar nav {
-    margin: 50px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.Navbar a:hover {
+    text-decoration: none;
 }
 
 .Navbar button {
     display: block;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .Navbar button:hover {
-    border: 2px solid#28A9BC;
+    background-color: #eafaf2;
+    outline: none;
+}
+
+.Navbar button:focus {
+    background-color: #eafaf2;
+    outline: none;
 }
 
 .Navbar hr {
@@ -79,18 +128,43 @@ h1 {
 }
 
 .HomeActions {
-    padding: 20px;
-    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.HomeActions i {
+    font-size: 1.7rem;
 }
 
 .HomeActions button {
     padding: 20px;
     margin: 20px;
+    width: 100%;
 }
 
 .HomeSummary {
     padding: 20px;
     margin: 20px;
+}
+
+.HomeActionsButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffcf7b;
+}
+
+.HomeActionsButton:hover {
+    background-color: #ffd793;
+    outline: none;
+}
+
+.HomeActionsName {
+    margin-right: 15px;
 }
 
 .Todo {
@@ -123,16 +197,16 @@ h1 {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.TodoCardEdit{
-    margin-top:20px;
-    margin-bottom:20px;
+.TodoCardEdit {
+    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #C6F0DA;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 28px 0 rgba(0, 0, 0, 0.3);
 }
+
 .TodoCardEdit:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 28px 0 rgba(0, 0, 0, 0.3);
 }
-
 
 .TodoCard button {
     background: none;
@@ -169,6 +243,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin: 10px;
 }
 
 .TodoCardTextarea {
@@ -181,63 +256,71 @@ h1 {
 }
 
 .TodoCardTextarea:focus {
-    background-color:#e7e7e7 ;
-    outline: none;
-}
-.TodoCardTextarea:hover {
-    background-color:#e7e7e7 ;
+    background-color: #e7e7e7;
     outline: none;
 }
 
-.TodoCardAdd{
+.TodoCardTextarea:hover {
+    background-color: #e7e7e7;
+    outline: none;
+    word-wrap: break-word;
+
+}
+
+.TodoCardAdd {
     background-color: #C6F0DA;
 }
 
-.TodoMenu{
+.TodoMenu {
     margin-top: 50px;
     font-weight: bold;
     text-align: center;
+    flex-wrap: wrap;
 }
 
+.TodoMenu .TodoCardSearchBox {
+    display: flex;
+    flex-direction: row;
+}
 
 .TodoMenu .TodoCardSearch {
     flex-grow: 2;
-    height: 100%;
     font-size: 1rem;
     font-family: sans-serif;
     border: 0;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    padding:10px;
+    padding: 10px;
 }
 
 .TodoMenu .TodoCardSearch:focus {
-    background-color:#ebebeb ;
+    background-color: #ebebeb;
     outline: none;
 }
+
 .TodoMenu .TodoCardSearch:hover {
-    background-color:#ebebeb ;
+    background-color: #ebebeb;
     outline: none;
 }
-
-.TodoMenu .buttonCloseSearch{
-    font-size: 0.9rem;
-}
-.TodoMenu .buttonCloseSearch:hover {
-    box-shadow: none;
-}
-.TodoMenu .buttonCloseSearch:focus {
-    outline: none;
-}
-
 
 .TodoMenu .buttonCloseSearch {
     background-color: white;
-    height: 100%;
-    margin:0;
+    margin: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     box-shadow: none;
+}
+
+.TodoMenu .buttonCloseSearch {
+    font-size: 0.9rem;
+}
+
+.TodoMenu .buttonCloseSearch:hover {
+    box-shadow: none;
+}
+
+.TodoMenu .buttonCloseSearch:focus {
+    outline: none;
 }
 
 .About {
@@ -245,14 +328,13 @@ h1 {
     margin: 25px;
 }
 
-
 .TodoMenu button {
     background-color: white;
     border: 0;
     box-shadow: none;
-    padding:10px;
+    padding: 10px;
     font-size: 0.9rem;
-    margin:0;
+    margin: 0;
     margin-right: 5px;
 }
 
@@ -260,23 +342,52 @@ h1 {
     box-shadow: 1px 1px 3px #676767;
 }
 
-
 .TodoCardSelect {
     cursor: pointer;
     line-height: 1.1;
     border: 0;
 }
+
 .TodoCardSelect:hover {
     box-shadow: 1px 1px 3px #676767;
 }
-.hrSpace{
-    margin-bottom: 25px;
+
+.visualizzaButton{
+    margin-left: 20px;
 }
 
+.addButton {
+    font-size: 1.6rem;
+    margin-left: 15px;
+    padding: 10px;
+    height: 100%;
+}
+.pagePosButton{
+    padding: 30px;
+    text-align: center;
+}
+.pagePosButton:hover{
+    cursor:pointer
+}
+.hrSpace {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    border: 1px solid#28A9BC;
+}
 
 .errMsg {
-    padding: 20px;
+    padding: 30px;
     color: brown;
+    text-align: center;
+}
+
+.errMsgField{
+    padding:8px;
+    color: brown;
+    text-align: center;
+}
+.errMsgField:hover{
+    cursor: pointer;
 }
 
 .colortodo {
@@ -295,6 +406,10 @@ h1 {
     display: flex;
 }
 
+.d-block {
+    display: block;
+}
+
 .s-around {
     justify-content: space-around;
 }
@@ -302,8 +417,35 @@ h1 {
 .text-gray {
     color: #676767
 }
+.text-blue {
+    color: #005e6d;
+}
+
+
+.text-center {
+    text-align: center;
+}
 
 @media screen and (max-width: 700px) {
+    .App {
+        display: block;
+    }
+    .Container {
+        width: 100%;
+    }
+    .Navbar {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .Navbar hr {
+        display: none;
+    }
+    h1 {
+        text-align: center;
+    }
     .TodoCardId {
         flex: 1
     }
@@ -312,11 +454,28 @@ h1 {
     }
     .TodoCardActions {
         flex-flow: column;
-        align-items: flex-end;
+        align-items: center;
         flex: 1;
+    }
+    .addButton{
+        margin:0;
+        margin-top:10px;
     }
     .TodoCardTextarea {
         width: 100%;
         height: 100%;
+    }
+    .HomeActionsName {
+        display: none;
+    }
+    .HomeActionsButton {
+        flex-direction: column;
+        width: auto;
+    }
+    .fixTodolistNav{
+        display: none;
+    }
+    .About {
+        text-align: center;
     }
 }

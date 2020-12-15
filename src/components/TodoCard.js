@@ -49,7 +49,7 @@ const TodoCard = (props) => {
                 <form onSubmit={(e) => submitForm(e)} noValidate>
 
                     <div className="TodoCard TodoCardEdit">
-                        <div className="TodoCardId">{editId}</div>
+                        <div className="TodoCardId text-gray">{editId}</div>
                         <div className="TodoCardTitle">
                             <textarea className="TodoCardTextarea" name="title" value={editTitle} onChange={e => { setEditTitle(e.target.value) }}></textarea>
                         </div>
@@ -77,7 +77,7 @@ const TodoCard = (props) => {
                 :
 
                 <div className="TodoCard">
-                    <div className="TodoCardId">{props.todo.id}</div>
+                    <div className="TodoCardId text-gray">{props.todo.id}</div>
                     <div className="TodoCardTitle">{props.todo.title}</div>
                     <div className="TodoCardActions">
                         <span className="TodoCardCompleted">
