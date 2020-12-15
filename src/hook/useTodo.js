@@ -40,6 +40,13 @@ const useTodo = () => {
         return todos.length
     }
 
+    const totTitleSearch = (searchText) => {
+        let numTitle = 0
+        todos.map((el) => (el.title.includes(searchText) && numTitle++
+        ))
+        return numTitle
+    }
+
     const updatePref = (item) => {
         updateTodo({
             id: item.id,
@@ -63,7 +70,7 @@ const useTodo = () => {
     }
 
 
-    return { renderCompleted, updatePref, totPref, totTodos, totTodo, totDone, totOngoing }
+    return { renderCompleted, updatePref, totPref, totTodos, totTodo, totDone, totOngoing, totTitleSearch }
 }
 
 export default useTodo

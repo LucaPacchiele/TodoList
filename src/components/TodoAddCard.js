@@ -15,22 +15,17 @@ const TodoAddCard = () => {
     const [editCompleted, setEditCompleted] = useState("todo")
     const [editAdd, setEditAdd] = useState(true) //variabile di controllo per sapere se è stato inviato o meno il form
 
-    const EMPTY_TODO = {
-        userId: 0,
-        id: 0,
-        title: '',
-        completed: "todo",
-        pref: false,
-        update: false
-    }
+
     // mostra il form con i valori inizializzati
     // questi valori verranno modificati da onChange e inviati da submitForm che invierà l'oggetto todo (creato dai valori temporanei)
     // allo stato del context attraverso addTodo
-    const createForm = (item) => {
+    const clearForm = () => {
         setEditAdd(true)
+        setEditTitle("")
+        setEditCompleted("todo")
         //setEditId(item.id)
-        setEditTitle(item.title)
-        setEditCompleted(item.completed)
+        //setEditTitle(item.title)
+        //setEditCompleted(item.completed)
     }
     const submitForm = (e) => {
         e.preventDefault()
@@ -46,8 +41,7 @@ const TodoAddCard = () => {
 
     //ogni volta che cambia toEditAdd (cioè ogni volta che viene inviato il form), crea nuovamente il form
     useEffect(() => {
-        createForm(EMPTY_TODO)
-        console.log("editId", editId)
+        clearForm()
     }, [editAdd])
 
 
@@ -55,7 +49,7 @@ const TodoAddCard = () => {
 
         <form onSubmit={(e) => submitForm(e)} noValidate>
 
-            <div className="TodoCard" style={{ backgroundColor: "#ff55ee" }}>
+            <div className="TodoCard" style={{ backgroundColor: "#fe99cc" }}>
                 <div className="TodoCardTitle">
                     <textarea className="TodoCardTextarea" name="title" value={editTitle} placeholder="Inserisci un nuovo ToDo..."
                         onChange={e => { setEditTitle(e.target.value) }}></textarea>

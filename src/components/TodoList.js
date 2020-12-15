@@ -9,8 +9,9 @@ import { AppContext } from '../context/AppContext'
 
 const TodoList = () => {
   const { todos, orderTodo } = useContext(AppContext)
-  const { totTodos, totTodo, totDone, totOngoing } = useTodo()
+  const { totTodos, totTodo, totDone, totOngoing, totTitleSearch } = useTodo()
   const [filterTodo, setFilterTodo] = useState("all")
+  const [searchText, setSearchText] = useState("")
 
   const checkFilter = (todo) => {
     if (filterTodo === "all") {
@@ -28,8 +29,13 @@ const TodoList = () => {
     return false
   }
 
-  useEffect(() => {
+  const checkSearch = (todo) => {
+    if (todo.title.includes(searchText)) return true
+    return false
+  }
 
+  useEffect(() => {
+    console.log(totTitleSearch(searchText))
   }, [totTodo()])
 
 
@@ -49,9 +55,20 @@ const TodoList = () => {
           </div>
         </div>
         <div className="">
-          <div>Title</div>
+          <div>Completed</div>
           <div className="d-flex"><button onClick={() => { orderTodo("completed", "asc") }}>asc</button>
             <button onClick={() => { orderTodo("completed", "disc") }}>disc</button>
+          </div>
+        </div>
+        <div className="">
+          <div>{totTitleSearch(searchText) > 0 ? `Risultati:${totTitleSearch(searchText)}` : "Cerca"}</div>
+          <div className="d-flex">
+            <form onSubmit={(e) => { e.preventDefault() }}>
+              <input type="text" className="TodoCardSearch" value={searchText}
+                onChange={(e) => { setSearchText(e.target.value) }} placeholder="Cerca...">
+              </input>
+              <button className="buttonCloseSearch" onClick={()=>{setSearchText("")}}>X</button>
+            </form>
           </div>
         </div>
 
@@ -59,32 +76,37 @@ const TodoList = () => {
           <div>Completed</div>
           <div>
             <select className="TodoCardSelect" value={filterTodo} onChange={(e) => { setFilterTodo(e.target.value) }} >
-              <option value="todo">TODO ({totTodo})</option>
-              <option value="done">DONE ({totDone})</option>
-              <option value="ongoing">ONGOING ({totOngoing})</option>
-              <option value="all">ALL ({totTodos})</option>
+              <option value="all">TUTTI ({totTodos()})</option>
+              <option value="todo">Da fare ({totTodo()})</option>
+              <option value="done">Svolti ({totDone()})</option>
+              <option value="ongoing">In corso ({totOngoing()})</option>
             </select>
           </div>
         </div>
       </div>
 
-      {totTodo() > 0 ?
+      {totTodos() > 0 ?
 
-        <div className="TodoList">
-          {todos.map(todo => (
-            <div key={todo.id} >
+        totTitleSearch(searchText) > 0 ?
+          <div className="TodoList">
+            {todos.map(todo => (
+              <div key={todo.id} >
 
-              {checkFilter(todo) && <TodoCard todo={todo} />}
+                {/* {checkFilter(todo) && <TodoCard todo={todo} />} */}
+                {checkSearch(todo) && checkFilter(todo) && <TodoCard todo={todo} />}
 
-            </div>
-          ))
-          }
-        </div>
-
+              </div>
+            ))
+            }
+          </div>
+          :
+          <div className="errMsg">
+            Nessun risultato trovato
+          </div>
         :
 
-        <div className="TodoCard">
-          Non vi sono elementi
+        <div className="errMsg">
+          Non vi sono elementi nella lista
         </div>
 
       }

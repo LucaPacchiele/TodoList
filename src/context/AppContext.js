@@ -102,7 +102,7 @@ const AppProvider = ({ children }) => {
     callApi()
   }, [])
   useEffect(() => {
-    console.log("todos", todos)
+   // console.log("todos", todos)
   }, [todos])
 
 

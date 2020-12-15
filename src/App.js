@@ -16,12 +16,6 @@ import {
 } from "react-router-dom";
 
 
-/*
-- definizione schema componenti e provider
-- definizione context (cosa contiene) e ambito (quali componenti raggiunge il provider)
-
-*/
-
 function App() {
   return (
     <Router>
@@ -34,7 +28,7 @@ function App() {
 
             
             
-            
+           
 
             <Switch>
 

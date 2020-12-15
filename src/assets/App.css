@@ -118,6 +118,22 @@ h1 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 28px 0 rgba(0, 0, 0, 0.2);
 }
 
+.TodoCard button {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    transition-duration: 0.3s;
+}
+
+.TodoCard button:hover {
+    background-color: white;
+    transition-duration: 0.3s;
+}
+
+.TodoCard .buttonPref i {
+    text-shadow: 1px 1px 3px #676767;
+}
+
 .TodoCardId {
     flex: 1;
     margin-right: 10px;
@@ -146,23 +162,40 @@ h1 {
     font-size: 1.2rem;
     font-family: sans-serif;
     border: 0;
+    padding: 20px;
 }
 
-.TodoCard button {
-    background: none;
+.TodoCardTextarea:focus {
+    background-color:#e7e7e7 ;
+    outline: none;
+}
+
+.TodoMenu .TodoCardSearch {
+    flex-grow: 2;
+    height: 100%;
+    font-size: 1rem;
+    font-family: sans-serif;
     border: 0;
-    box-shadow: none;
-    transition-duration: 0.3s;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding:10px;
 }
 
-.TodoCard button:hover {
+.TodoMenu .TodoCardSearch:focus {
+    background-color:#e7e7e7 ;
+    outline: none;
+}
+.TodoMenu .buttonCloseSearch:focus {
+    outline: none;
+}
+
+.TodoMenu .buttonCloseSearch {
     background-color: white;
-    transition-duration: 0.3s;
-}
-
-
-.TodoCard .buttonPref i {
-    text-shadow: 1px 1px 3px #676767;
+    height: 100%;
+    margin:0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: none;
 }
 
 .About {
@@ -176,9 +209,9 @@ h1 {
 .TodoMenu button {
     font-size: 0.8rem;
     padding: 15px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     display: inline;
-    background-color: burlywood;
+    background-color: white;
     border: 0;
 }
 
@@ -186,6 +219,11 @@ h1 {
     cursor: pointer;
     line-height: 1.1;
     border: 0;
+}
+
+.errMsg {
+    padding: 20px;
+    color: brown;
 }
 
 .colortodo {
@@ -206,6 +244,10 @@ h1 {
 
 .s-around {
     justify-content: space-around;
+}
+
+.text-gray {
+    color: #676767
 }
 
 @media screen and (max-width: 700px) {
