@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import useTodo from '../hook/useTodo'
 
@@ -31,12 +31,14 @@ const TodoCard = (props) => {
     const submitForm = (e) => {
         e.preventDefault()
         setEditUpdate(false) //chiudo la "visualizzazione form"
-        updateTodo({
-            id: editId,
-            title: editTitle,
-            completed: editCompleted,
-            pref: editPref
-        })
+        if (buttonForm !== "undo") {
+            updateTodo({
+                id: editId,
+                title: editTitle,
+                completed: editCompleted,
+                pref: editPref
+            })
+        }
 
     }
 
@@ -46,7 +48,7 @@ const TodoCard = (props) => {
 
                 <form onSubmit={(e) => submitForm(e)} noValidate>
 
-                    <div className="TodoCard">
+                    <div className="TodoCard TodoCardEdit">
                         <div className="TodoCardId">{editId}</div>
                         <div className="TodoCardTitle">
                             <textarea className="TodoCardTextarea" name="title" value={editTitle} onChange={e => { setEditTitle(e.target.value) }}></textarea>

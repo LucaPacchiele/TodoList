@@ -30,13 +30,19 @@ const TodoList = () => {
   }
 
   const checkSearch = (todo) => {
-    if (todo.title.includes(searchText)) return true
+    if (todo.title.toUpperCase().includes(searchText.toUpperCase())) return true
     return false
   }
 
   useEffect(() => {
-    console.log(totTitleSearch(searchText))
-  }, [totTodo()])
+    orderTodo("id", "asc")
+    console.log("ciao")
+  }, [])
+  // useEffect(() => {
+  //   console.log(totTitleSearch(searchText))
+  // }, [totTodo()])
+
+
 
 
   return (
@@ -55,25 +61,26 @@ const TodoList = () => {
           </div>
         </div>
         <div className="">
-          <div>Completed</div>
-          <div className="d-flex"><button onClick={() => { orderTodo("completed", "asc") }}>asc</button>
-            <button onClick={() => { orderTodo("completed", "disc") }}>disc</button>
-          </div>
-        </div>
-        <div className="">
           <div>{totTitleSearch(searchText) > 0 ? `Risultati:${totTitleSearch(searchText)}` : "Cerca"}</div>
-          <div className="d-flex">
+          <div className="TodoCardSearchBox d-flex">
             <form onSubmit={(e) => { e.preventDefault() }}>
               <input type="text" className="TodoCardSearch" value={searchText}
-                onChange={(e) => { setSearchText(e.target.value) }} placeholder="Cerca...">
+                onChange={(e) => { setSearchText(e.target.value) }} placeholder="Cerca tra i titoli...">
               </input>
-              <button className="buttonCloseSearch" onClick={()=>{setSearchText("")}}>X</button>
+              <button className="buttonCloseSearch" onClick={() => { setSearchText("") }}><i className="fa fa-times"></i></button>
             </form>
           </div>
         </div>
+        <div className="">
+          <div>Ordina status</div>
+          <div className="d-flex"><button onClick={() => { orderTodo("completed", "asc") }}>A-Z</button>
+            <button onClick={() => { orderTodo("completed", "disc") }}>Z-A</button>
+          </div>
+        </div>
+
 
         <div className="">
-          <div>Completed</div>
+          <div>Filtra status</div>
           <div>
             <select className="TodoCardSelect" value={filterTodo} onChange={(e) => { setFilterTodo(e.target.value) }} >
               <option value="all">TUTTI ({totTodos()})</option>

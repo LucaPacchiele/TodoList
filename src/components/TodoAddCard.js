@@ -49,13 +49,14 @@ const TodoAddCard = () => {
 
         <form onSubmit={(e) => submitForm(e)} noValidate>
 
-            <div className="TodoCard" style={{ backgroundColor: "#fe99cc" }}>
+            <div className="TodoCard TodoCardAdd">
                 <div className="TodoCardTitle">
                     <textarea className="TodoCardTextarea" name="title" value={editTitle} placeholder="Inserisci un nuovo ToDo..."
                         onChange={e => { setEditTitle(e.target.value) }}></textarea>
                 </div>
                 <div className="TodoCardActions">
                     <span className="TodoCardCompleted">
+                        <div>Status</div>
                         <select className="TodoCardSelect" name="completed" value={editCompleted} onChange={e => { setEditCompleted(e.target.value) }}>
                             <option value="todo">Da fare</option>
                             <option value="done">Svolto</option>

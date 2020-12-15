@@ -42,7 +42,7 @@ const useTodo = () => {
 
     const totTitleSearch = (searchText) => {
         let numTitle = 0
-        todos.map((el) => (el.title.includes(searchText) && numTitle++
+        todos.map((el) => (el.title.toUpperCase().includes(searchText.toUpperCase()) && numTitle++
         ))
         return numTitle
     }

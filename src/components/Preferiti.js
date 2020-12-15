@@ -12,12 +12,13 @@ const Preferiti = () => {
     <div className="Preferiti">
       <h1>Preferiti</h1>
 
-      <div className="TodoCard" style={{ fontWeight: "bold", backgroundColor: "gray" }}>
-        <div>ID</div>
-        <div>Title</div>
-        <div>Completed</div>
-        <div>Actions</div>
+      <div className="TodoMenu d-flex">
+        <div className="TodoCardId">ID</div>
+        <div className="TodoCardTitle">Titolo</div>
+        <div className="TodoCardCompleted">Status</div>
       </div>
+
+
 
       {totPref() > 0 ?
 

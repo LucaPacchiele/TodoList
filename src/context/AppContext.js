@@ -50,14 +50,14 @@ const AppProvider = ({ children }) => {
   */
   const addTodo = (todo) => {
     return (previousState, currentProps) => {
-      return [...previousState, {
+      return [{
         userId: todo.userId,
         id: calcNewId(previousState),
         title: todo.title,
         completed: todo.completed,
         pref: todo.pref,
         update: todo.update
-      }]
+      }, ...previousState]
     }
 
   }
