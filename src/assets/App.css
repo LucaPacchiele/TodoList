@@ -65,7 +65,7 @@ button:hover {
 h1 {
     display: block;
     color: #005e6d;
-    margin: 15px;
+    margin: 10px;
     font-weight: bold;
     padding: 20px;
     font-size: 2rem;
@@ -73,6 +73,10 @@ h1 {
 
 h2 {
     margin-top: 15px;
+}
+
+h3 {
+    font-size: 1rem;
 }
 
 .App {
@@ -95,6 +99,7 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .Navbar a:hover {
@@ -352,6 +357,13 @@ h2 {
     box-shadow: 1px 1px 3px #676767;
 }
 
+.fixTodolistNavSm{
+    display: block;
+}
+.fixTodolistNavBig{
+    display: none;
+}
+
 .visualizzaButton{
     margin-left: 20px;
 }
@@ -472,9 +484,13 @@ h2 {
         flex-direction: column;
         width: auto;
     }
-    .fixTodolistNav{
+    .fixTodolistNavSm{
         display: none;
     }
+    .fixTodolistNavBig{
+        display: block;
+    }
+    
     .About {
         text-align: center;
     }

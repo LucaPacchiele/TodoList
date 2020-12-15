@@ -13,7 +13,9 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <h1>ToDo List v1.0</h1>
+      <h1>ToDo List <span className="text-blue">v1.0</span></h1>
+     
+      <div className="text-blue text-center">Crea, modifica e cancella i tuoi ToDo. Inizia subito con una chiamata API!</div>
       <div className="HomeActions">
         <button className="HomeActionsButton" onClick={() => { callApi() }}>
           <div className="HomeActionsName">Carica da API</div>
@@ -26,15 +28,15 @@ const Home = () => {
       </div>
       <div className="HomeSummary">
         <div>
-          ToDo totali: <span style={{ color: "green" }}>{totTodos()}</span>
+          ToDo totali: <span className="text-blue">{totTodos()}</span>
         {totTodos()>0 && <span className="visualizzaButton"><Link to="/TodoList">visualizzali</Link></span>}
         </div>
         <hr className="hrSpace" />
-        <div>Preferiti: <span style={{ color: "green" }}> {totPref()} </span></div>
+        <div>Preferiti: <span className="text-blue"> {totPref()} </span></div>
         <hr className="hrSpace" />
-        <div>Da fare: <span style={{ color: "green" }}>{totTodo()}</span></div>
-        <div>Svolti: <span style={{ color: "green" }}>{totDone()}</span></div>
-        <div>In corso: <span style={{ color: "green" }}>{totOngoing()}</span></div>
+        <div>Da fare: <span className="text-blue">{totTodo()}</span></div>
+        <div>Svolti: <span className="text-blue">{totDone()}</span></div>
+        <div>In corso: <span className="text-blue">{totOngoing()}</span></div>
       </div>
     </div>
   )
