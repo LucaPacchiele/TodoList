@@ -1,0 +1,35 @@
+stages:
+   - download_libraries
+   - build
+
+
+download_libraries:
+    when: manual
+    image: node:14.3.0-alpine3.10
+    stage: download_libraries
+    allow_failure: false
+    cache:
+        paths:
+        - node_modules/
+    script:
+        - npx pnpm add -g yarn
+        - yarn
+    artifacts:
+        paths:
+            - node_modules
+
+build_app:
+    stage: build
+    when: on_success
+    image: node:14.3.0-alpine3.10
+    allow_failure: false
+    dependencies: 
+        - download_libraries
+    needs:
+        - download_libraries
+    script:
+        - npx pnpm add -g yarn
+        - yarn build
+    artifacts:
+        paths:
+            - build/*
